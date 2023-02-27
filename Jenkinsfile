@@ -6,7 +6,7 @@ pipeline{
     stages{
         stage ("Docker build") {
             steps{
-                sh 'docker build -t go-app-delete-asap'
+                sh 'docker build -t go-app-delete-asap .'
             }
         }
 
