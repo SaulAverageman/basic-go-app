@@ -12,7 +12,7 @@ pipeline{
 
         stage ("Docker scan"){
             steps{
-                sh 'docker scan -f Dockerfile go-app-delete-asap .'
+                sh 'docker scan -f Dockerfile go-app-delete-asap'
             }
         }
     }
