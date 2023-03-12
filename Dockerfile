@@ -7,6 +7,8 @@ RUN cd cmd/web/ && CGO_ENABLED=0 go build -o /work/binary
 
 FROM scratch
 WORKDIR /work
+COPY --from=builder /etc/passwd /etc/passwd
+USER goruntime
 COPY --from=builder /work /work
 ENTRYPOINT [ "/work/binary" ]
 EXPOSE 8000
