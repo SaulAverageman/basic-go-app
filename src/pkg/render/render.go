@@ -12,7 +12,7 @@ import (
 var appConfig *config.AppConfig
 var err error
 
-func SetRenderAppConfig(config *config.AppConfig) {
+func NewRender(config *config.AppConfig) {
 	appConfig = config
 }
 

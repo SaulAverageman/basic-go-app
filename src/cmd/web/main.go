@@ -22,7 +22,7 @@ func main() {
 	}
 
 	// sending app config to render.go
-	render.SetRenderAppConfig(&app)
+	render.NewRender(&app)
 
 	const appPort = ":8000"
 	http.HandleFunc("/", handler.Home)
