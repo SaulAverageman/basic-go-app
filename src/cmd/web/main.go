@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	"github.com/saulaverageman/basic-go-app/pkg/config"
-	"github.com/saulaverageman/basic-go-app/pkg/handler"
 	"github.com/saulaverageman/basic-go-app/pkg/render"
 )
 
@@ -25,9 +24,16 @@ func main() {
 	render.NewRender(&app)
 
 	const appPort = ":8000"
-	http.HandleFunc("/", handler.Home)
-	http.HandleFunc("/about", handler.About)
 
-	_ = http.ListenAndServe(appPort, nil)
+	server := &http.Server{
+		Addr:    appPort,
+		Handler: routes(&app),
+	}
+
+	log.Println("verbose: starting servet @port:", appPort)
+	err = server.ListenAndServe()
+	if err != nil {
+		log.Fatal("Failed to start server")
+	}
 
 }

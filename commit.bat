@@ -1,3 +1,3 @@
 git add .
-git commit -m "`date`"
+git commit -m "added mux routing"
 git push origin main
