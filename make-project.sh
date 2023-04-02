@@ -9,6 +9,7 @@ done
 
 if [ $build = "true" ]
 then
+    docker image prune
     docker build -t go-proj-test:latest .
 fi
 
