@@ -10,12 +10,12 @@ done
 if [ $build = "true" ]
 then
     docker image prune
-    docker build -t go-proj-test:latest .
+    docker build -t go-proj-testt .
 fi
 
 if [ $run = "true" ]
 then
-    docker run --rm -d -p 8000:8000 go-proj-test:latest
+    docker run --rm -d -p 8000:8000 go-proj-test
+    curl localhost:8000
+    curl localhost:8000/about
 fi
-curl localhost:8000
-curl localhost:8000/about
