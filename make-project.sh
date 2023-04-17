@@ -10,7 +10,7 @@ done
 if [ $build = "true" ]
 then
     docker image prune
-    docker build -t go-proj-testt .
+    docker build -t go-proj-test .
 fi
 
 if [ $run = "true" ]

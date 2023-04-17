@@ -3,14 +3,26 @@ package main
 import (
 	"log"
 	"net/http"
+	"time"
 
+	"github.com/alexedwards/scs/v2"
 	"github.com/saulaverageman/basic-go-app/pkg/config"
 	"github.com/saulaverageman/basic-go-app/pkg/render"
 )
 
+// app is the app config for the whole project
+var app config.AppConfig
+
 func main() {
-	// app is the app config for the whole project
-	var app config.AppConfig
+	// set true in production
+	app.SecureConnection = false
+
+	// session
+	session := scs.New()
+	session.Lifetime = 12 * time.Hour
+	session.Cookie.Persist = true
+	session.Cookie.SameSite = http.SameSiteLaxMode
+	app.Session = session
 
 	// render template cache as soon as the app starts and saving them in appConfig.TemplateCache
 	tc, err := render.FormTemplateCache("/work/")
