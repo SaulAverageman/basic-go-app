@@ -22,6 +22,7 @@ func routes(app *config.AppConfig) http.Handler {
 	mux.Use(SessionLoad) //Loading session cookie as server by nature doesnt do on its own
 
 	//routes
+	handler.NewHandler(appConfig)
 	mux.Get("/", handler.Home)
 	mux.Get("/about", handler.About)
 

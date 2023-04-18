@@ -24,6 +24,9 @@ func main() {
 	session.Cookie.SameSite = http.SameSiteLaxMode
 	app.Session = session
 
+	// sending app config to render.go
+	render.NewRender(&app)
+
 	// render template cache as soon as the app starts and saving them in appConfig.TemplateCache
 	tc, err := render.FormTemplateCache("/work/")
 	if err != nil {
@@ -31,9 +34,6 @@ func main() {
 	} else {
 		app.TemplateCache = tc
 	}
-
-	// sending app config to render.go
-	render.NewRender(&app)
 
 	const appPort = ":8000"
 
